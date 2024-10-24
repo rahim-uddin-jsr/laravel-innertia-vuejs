@@ -1,16 +1,18 @@
 <template>
     <div>
-        <h2>Home</h2>
+        <h2 class="text-center text-4xl mb-3">{{ title }}</h2>
 
         <!-- Button to request Location Permission -->
-        <button @click="requestLocationPermission">Request Location Permission</button>
+        <div class="flex justify-center flex-col w-2/5 mx-auto">
+            <button @click="requestLocationPermission">Request Location Permission</button>
 
-        <!-- Button to request Notification Permission -->
-        <button @click="requestNotificationPermission">Request Notification Permission</button>
+            <!-- Button to request Notification Permission -->
+            <button @click="requestNotificationPermission">Request Notification Permission</button>
 
-        <!-- Cookie Consent Button -->
-        <button @click="requestCookieConsent">Request Cookie Consent</button>
+            <!-- Cookie Consent Button -->
+            <button @click="requestCookieConsent">Request Cookie Consent</button>
 
+        </div>
         <!-- Show confirmation status -->
         <p v-if="locationGranted !== null">Location Permission: {{ locationGranted ? 'Granted' : 'Denied' }}</p>
         <p v-if="notificationGranted !== null">Notification Permission: {{ notificationGranted }}</p>
@@ -19,7 +21,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, defineProps } from 'vue';
 
 // State variables to track permission statuses
 const locationGranted = ref(null);
@@ -67,6 +69,9 @@ const requestCookieConsent = () => {
         alert('Cookies rejected.');
     }
 };
+defineProps({
+    title: String
+})
 </script>
 
 <style scoped>

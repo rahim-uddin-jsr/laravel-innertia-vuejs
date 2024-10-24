@@ -9,6 +9,6 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Frontend/Home');
+        return Inertia::render('Frontend/Home', ['title' => 'This is Home Page']);
     }
 }
